@@ -17,10 +17,10 @@ public class Polynomial {
     }
 
     public static Polynomial build(String input) {
-        String[] splitted = input.split(" +");
+        String[] splitted = input.split("\s+");
         List<Monomial> monos = new LinkedList<>();
+        int exponentCounter = 0;
         for (String stringCoe : splitted) {
-            int exponentCounter = 0;
             if (isStringInteger(stringCoe)) {
                 Scalar coef = stringToIntegerScalar(stringCoe);
                 Monomial inputMonomial = new Monomial(exponentCounter, coef);
@@ -50,6 +50,9 @@ public class Polynomial {
                 Monomial m2 = monomials.get(exponent);
                 baseMonos.replace(exponent, m1.add(m2));
             }
+            else {
+                baseMonos.put(exponent, m.getValue());
+            }
         }
         for (Map.Entry<Integer,Monomial> m : baseMonos.entrySet()) {
             output.add(m.getValue());
@@ -74,7 +77,7 @@ public class Polynomial {
         Scalar output = new IntegerScalar(0);
         for (Map.Entry<Integer,Monomial> entry : monomials.entrySet()) {
             Monomial m = entry.getValue();
-            output.add(m.evaluate(s));
+            output = output.add(m.evaluate(s));
         }
         return output;
     }
@@ -115,15 +118,20 @@ public class Polynomial {
                 Monomial m = entry.getValue();
                 output = output + m.toString() + " + ";
             }
-            output.replaceAll("+ -", "- ");
+            output = output.replace("+ -", "- ");
+            output = output.replace("+  +", "+");
             return output.substring(0, output.length()-3);
         }
 
 
     public Polynomial clone() {
-        return ((Polynomial) monomials.clone());
+        List<Monomial> copy = new LinkedList<>();
+        for (Map.Entry<Integer,Monomial> entry : monomials.entrySet()) {
+            Monomial m = entry.getValue();
+            copy.add(m);
+        }
+        return new Polynomial(copy);
     }
-    
 
     private TreeMap<Integer, Monomial> getTreeMap(){
         return monomials;

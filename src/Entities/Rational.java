@@ -8,13 +8,13 @@ public class Rational implements Scalar{
 	private int denominator;
 	
     public Rational(int numerator, int denominator)
-    {
-        this.numerator = numerator;
-        this.denominator = denominator;
+    {        
         if (denominator < 0) {
             numerator *= -1;
             denominator *= -1;
         }
+        this.numerator = numerator;
+        this.denominator = denominator;
     }
     
     private int gcd(int a, int b) 
