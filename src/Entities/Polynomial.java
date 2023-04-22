@@ -116,7 +116,7 @@ public class Polynomial {
             String output = "";
             for (Map.Entry<Integer,Monomial> entry : monomials.entrySet()) {
                 Monomial m = entry.getValue();
-                output = output + m.toString() + " + ";
+                output = output + m.toString();
             }
             output = output.replace("+ -", "- ");
             output = output.replace("+  +", "+");

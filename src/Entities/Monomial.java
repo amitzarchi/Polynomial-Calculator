@@ -55,17 +55,17 @@ public class Monomial {
 
     public String toString() {
         if (coefficient.equals(one) & exponent > 1) 
-            return "x^" + exponent;
+            return "x^" + exponent + " + ";
         else if (coefficient.equals(minusOne) & exponent > 1) 
-            return "-x^" + exponent;
+            return "-x^" + exponent + " + ";
         else if (coefficient.equals(zero)) 
             return "";
         else if (exponent == 0)
-            return coefficient.toString();
+            return coefficient.toString() + " + ";
         else if (exponent == 1)
-            return coefficient.toString() + "x";
+            return coefficient.toString() + "x" + " + ";
         else 
-            return coefficient.toString()+ "x^" + exponent;
+            return coefficient.toString()+ "x^" + exponent + " + ";
     }
 
     public int getExponent(){
