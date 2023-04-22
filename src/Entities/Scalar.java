@@ -6,7 +6,6 @@ public interface Scalar {
     Scalar neg();
     Scalar power(int exponent);
     int sign();
-    boolean equals(Object o);
-	int getValue();
-
+    int getNumerator();
+    int getDenominator();
 }
