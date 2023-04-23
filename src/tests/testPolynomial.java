@@ -78,11 +78,6 @@ public class testPolynomial {
         }
         if (!testMul(p1, p2, p4))
         {
-            System.out.println(p1); 
-            System.out.println(p2); 
-            System.out.println(p4); 
-            System.out.println(p1.mul(p2)); 
-
             System.out.println("testPolynomial.testMul Failed"); 
         }
         if (!testEvaluate(p1, new IntegerScalar(5), new Rational(35, 2)))
