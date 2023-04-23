@@ -26,7 +26,7 @@ public class Rational implements Scalar{
         
     }
 
-    Rational reduce() {
+    public Rational reduce() {
         int gcd = gcd(Math.abs(numerator), Math.abs(denominator));
         int reducedNumerator = numerator / gcd;
         int reducedDenominator = denominator / gcd;
